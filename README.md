@@ -237,6 +237,47 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 ufw status verbose
 80 22 21
 
+Se creo un proyecto app.masvisitas.com
 
+Se agrego en la carpeta www 
+
+npm install
+se levanto en el pm2
+
+nos vamos siteconfiguracion de ngnix
+
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name labcode.site www.labcode.site;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+
+### Creando un sub dominio para mi proyecto
+transgas.labcode.site
+
+crear carpeta var www
+
+clonar proyecto
+
+Nest start => el dist mondificamos el nombre main.js a trangas.js y lo enviamos a production branch
+
+pm2 start 
+
+crear archivo ngnix avalibre 
+
+luego ssl
 
 
